@@ -20,4 +20,8 @@ class Registrant
         @permit
     end
 
+    def earn_permit
+        @permit = true
+    end
+
 end
