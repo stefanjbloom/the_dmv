@@ -1,34 +1,34 @@
 require 'spec_helper'
 
-RSpec.describe Registrant do
+RSpec.describe @registrant do
 
     before(:each) do
-        registrant = Registrant.new(@name, @age, @permit)
+        @registrant = Registrant.new('Stefan', 35, true)
     end
 
     it 'exists' do
-        registrant = Registrant.new(@name, @age, @permit)
-        expect(registrant).to be_instance_of(Registrant)
+        expect(@registrant).to be_instance_of(Registrant)
     end
 
     it 'has a name' do
-        registrant = Registrant.new(@name, @age, @permit)
-
-        expect(registrant.name).to eq(@name)
+        expect(@registrant.name).to eq("Stefan")
     end
 
     it 'has an age' do
-        registrant = Registrant.new(@name, @age, @permit)
-
-        expect(registrant.age).to eq(@age)
+        expect(@registrant.age).to eq(35)
     end
 
     it 'has a permit' do
-        registrant = Registrant.new(@name, @age, @permit)
-
-        expect(registrant.permit).to eq(@permit)
+        expect(@registrant.permit).to eq(true)
     end
 
+    it 'has permit set to false by default' do
+        registrant_2 = Registrant.new('Penny', 15 )
 
+        expect(registrant_2.permit?).to eq(false)
+    end
+
+    it 'has license data' do
+        expect(@permit.license_data).to eq(license_data)
+    end
 end
-

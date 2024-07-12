@@ -9,9 +9,15 @@ class Registrant
         @name = name
         @age = age
         @permit = permit
+        @license_data = {
+            :written => false,
+            :license => false,
+            :renewed => false
+        }
     end
 
-# We are defining this registrant class so that visitors can use our services.  
-# The registrant should have a name, age, permit, and license_data attributes.
-#  If no value is provided for permit, it should default to false.
+    def permit?
+        @permit
+    end
+
 end
