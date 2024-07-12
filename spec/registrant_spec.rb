@@ -4,13 +4,6 @@ RSpec.describe Registrant do
 
     before(:each) do
         registrant = Registrant.new(@name, @age, @permit)
-        registrant_1 = Registrant.new('Bruce', 18, true )
-        registrant_2 = Registrant.new('Penny', 15 )
-
-        expect(registrant.name).to eq(@name)
-        expect(registrant_1.name).to eq('Bruce')
-        expect(registrant_2.name).to eq('Penny')
-
     end
 
     it 'exists' do
@@ -20,13 +13,22 @@ RSpec.describe Registrant do
 
     it 'has a name' do
         registrant = Registrant.new(@name, @age, @permit)
-        registrant_1 = Registrant.new('Bruce', 18, true )
-        registrant_2 = Registrant.new('Penny', 15 )
 
         expect(registrant.name).to eq(@name)
-        expect(registrant_1.name).to eq('Bruce')
-        expect(registrant_2.name).to eq('Penny')
     end
+
+    it 'has an age' do
+        registrant = Registrant.new(@name, @age, @permit)
+
+        expect(registrant.age).to eq(@age)
+    end
+
+    it 'has a permit' do
+        registrant = Registrant.new(@name, @age, @permit)
+
+        expect(registrant.permit).to eq(@permit)
+    end
+
 
 end
 

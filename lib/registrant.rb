@@ -12,5 +12,6 @@ class Registrant
     end
 
 # We are defining this registrant class so that visitors can use our services.  
-# The registrant should have a name, age, permit, and license_data.
+# The registrant should have a name, age, permit, and license_data attributes.
+#  If no value is provided for permit, it should default to false.
 end
