@@ -30,24 +30,35 @@ RSpec.describe Facility do
   end
 
   describe '#register vehicle' do
-    it 'can register a vehicle' do
+    it 'starts with an empty array' do
       expect(@facility.registered_vehicles).to eq([])
+    end
+
+    it 'can add vehicles to registered vehicles' do
       @facility.register_vehicle(@cruz)
       @facility.register_vehicle(@bolt)
       @facility.register_vehicle(@camaro)
+
       expect(@facility.registered_vehicles).to eq([@cruz, @bolt, @camaro])
     end
   end
 
-  describe '#collect fees' do
-    it 'can collect fees' do
-     expect(@facility.collected_fees).to eq(0)
-    end
-  end
+  # describe '#collected fees' do
+  #   it 'can collect fees based on plate type' do
+  #    expect(@facility.collected_fees).to eq(0)
 
-  describe '#give plate'
+  #    @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice, plate_type: :regular} )
+  #    expect(@facility.collected_fees).to eq(100)
 
+  #    @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev, plate_type: :ev} )
+  #    expect(@facility.collected_fees).to eq(200)
 
+  #    @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice, plate_type: :antique} )
+
+  #    expect(@facility.collected_fees).to eq(25)
+
+  #   end
+  # end
 # We want specific DMV facilities to be able to administer sevices to our registrants.
 # Register a Vehicle
 #   25 years old and older are ANTIQUE and cost $25 to Register

@@ -32,7 +32,12 @@ class Vehicle
   end
 
   def give_plate
-    
+    if vehicle.antique? == true
+      @plate_type = :antique
+    elsif vehicle.electric_vehicle? == true
+      @plate_type = :ev
+    else
+      @plate_type = :regular
+    end
   end
-
 end

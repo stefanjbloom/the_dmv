@@ -39,7 +39,6 @@ RSpec.describe Vehicle do
       expect(@cruz.set_date).to eq(Date.today)
       expect(@bolt.set_date).to eq(Date.today)
       expect(@camaro.set_date).to eq(Date.today)
-
     end
   end
   describe '#registration date' do
@@ -59,7 +58,6 @@ RSpec.describe Vehicle do
       expect(@cruz.plate_type).to eq(:regular)
       expect(@bolt.plate_type).to eq(:ev)
       expect(@camaro.plate_type).to eq(:antique)
-
     end
   end
 
