@@ -45,6 +45,20 @@ RSpec.describe Vehicle do
   describe '#registration date' do
     it 'records vehicles registration dates' do
       expect(@cruz.registration_date).to eq(nil)
+    end
+  end
+
+  describe '#plate type' do
+    it 'has a plate type' do
+      expect(@cruz.plate_type).to eq(nil)
+
+      @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice, plate_type: :regular} )
+      @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev, plate_type: :ev} )
+      @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice, plate_type: :antique} )
+
+      expect(@cruz.plate_type).to eq(:regular)
+      expect(@bolt.plate_type).to eq(:ev)
+      expect(@camaro.plate_type).to eq(:antique)
 
     end
   end

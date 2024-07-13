@@ -45,6 +45,8 @@ RSpec.describe Facility do
     end
   end
 
+  describe '#give plate'
+
 
 # We want specific DMV facilities to be able to administer sevices to our registrants.
 # Register a Vehicle

@@ -22,7 +22,7 @@ class Facility
   def register_vehicle(vehicle)
     @registered_vehicles << vehicle
     # vehicle.set_registration_date
-    # vehicle.set_plate_type
+    # vehicle.give_plate
     #   if vehicle == antique?
     #     @collected_fees +=
     #   end
