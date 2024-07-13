@@ -37,12 +37,14 @@ RSpec.describe Facility do
       @facility.register_vehicle(@camaro)
       expect(@facility.registered_vehicles).to eq([@cruz, @bolt, @camaro])
     end
+  end
 
-    it 'records vehicles registration dates' do
-      expect(@cruz.registration_date).to eq(nil)
-
+  describe '#collect fees' do
+    it 'can collect fees' do
+     expect(@facility.collected_fees).to eq(0)
     end
   end
+
 
 # We want specific DMV facilities to be able to administer sevices to our registrants.
 # Register a Vehicle

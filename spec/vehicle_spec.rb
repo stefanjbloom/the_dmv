@@ -37,6 +37,16 @@ RSpec.describe Vehicle do
   describe '#set_date' do
     it 'can register today' do
       expect(@cruz.set_date).to eq(Date.today)
+      expect(@bolt.set_date).to eq(Date.today)
+      expect(@camaro.set_date).to eq(Date.today)
+
     end
   end
+  describe '#registration date' do
+    it 'records vehicles registration dates' do
+      expect(@cruz.registration_date).to eq(nil)
+
+    end
+  end
+
 end
