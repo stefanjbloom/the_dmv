@@ -23,4 +23,23 @@ RSpec.describe Facility do
       expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration'])
     end
   end
+
+  describe '#register vehicle' do
+    it 'can register a vehicle' do
+      expect(@facility.registered_vehicle).to eq([])
+      @facility.register_vehicle(@cruz)
+      @facility.register_vehicle(@bolt)
+      @facility.register_vehicle(@camaro)
+      expect(@facility.registered_vehicle).to eq([@cruz, @bolt, @camaro])
+    end
+
+    
+  end
+
+# We want specific DMV facilities to be able to administer sevices to our registrants.
+# Register a Vehicle
+#   25 years old and older are ANTIQUE and cost $25 to Register
+#   EV's cost $200 to register
+#   All other vehicles cost $100 to register
+#   plate_type should be set to :regular, :antique, or :ev upon successful registration
 end
