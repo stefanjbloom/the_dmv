@@ -40,6 +40,7 @@ RSpec.describe Facility do
     end
 
     it 'can add vehicles to registered vehicles' do
+      @facility.add_service('Vehicle Registration')
       @facility.register_vehicle(@cruz)
       @facility.register_vehicle(@bolt)
       @facility.register_vehicle(@camaro)
@@ -71,6 +72,7 @@ RSpec.describe Facility do
     it 'increases with every vehicle registration' do
       # @facility.register_vehicle(@camaro)
       # expect(@facility.collected_fees).to eq(25)   
+      @facility.add_service('Vehicle Registration')
 
       @facility.register_vehicle(@cruz)
       expect(@facility.collected_fees).to eq(100)
