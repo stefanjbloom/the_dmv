@@ -27,14 +27,16 @@ class Vehicle
     @engine == :ev
   end
 
-  def set_date
+# above here is original fork. below is my work
+
+  def set_registration_date
     @registration_date = Date.today
   end
 
   def give_plate
-    if vehicle.antique? == true
+    if antique? == true
       @plate_type = :antique
-    elsif vehicle.electric_vehicle? == true
+    elsif electric_vehicle? == true
       @plate_type = :ev
     else
       @plate_type = :regular

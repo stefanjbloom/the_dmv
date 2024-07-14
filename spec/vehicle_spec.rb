@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+RSpec.configure do |config|
+  config.formatter = :documentation
+  end
+
 RSpec.describe Vehicle do
   before(:each) do
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
@@ -34,20 +38,21 @@ RSpec.describe Vehicle do
     end
   end
 
-  describe '#set_date' do
-    it 'can register today' do
-      expect(@cruz.set_date).to eq(Date.today)
-      expect(@bolt.set_date).to eq(Date.today)
-      expect(@camaro.set_date).to eq(Date.today)
-    end
-  end
-  describe '#registration date' do
-    it 'records vehicles registration dates' do
+# above here is original fork. below is my work
+
+  describe '#set registration date' do
+    it 'starts at nil when not in hash' do
       expect(@cruz.registration_date).to eq(nil)
+    end
+
+    it 'puts todays date as registration date' do
+      expect(@cruz.set_registration_date).to eq(Date.today)
+      expect(@bolt.set_registration_date).to eq(Date.today)
+      expect(@camaro.set_registration_date).to eq(Date.today)
     end
   end
 
-  describe '#plate type' do
+  describe '#give plate' do
     it 'has a plate type' do
       expect(@cruz.plate_type).to eq(nil)
 
