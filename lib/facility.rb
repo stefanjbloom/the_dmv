@@ -53,11 +53,17 @@ class Facility
     else 
       false
     end
-
   end
-# Administer a road test
-# A road test can only be administered to registrants who have passed the written test
-# For simplicity’s sake, Registrants who qualify for the road test automatically earn a license
+  # Renew a driver’s license
+  # A license can only be renewed if 
+  # the registrant has already passed the road test and earned a license
+  def renew_drivers_license(registrant)
+    if @services.include?('Renew License') == true && registrant.license_data[:license] == true
+      registrant.set_renewed
+    else 
+      false
+    end
+  end
 end
 
-      # require 'pry'; binding.pry
+# require 'pry'; binding.pry

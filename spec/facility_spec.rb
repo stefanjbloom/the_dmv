@@ -27,11 +27,11 @@ RSpec.describe Facility do
     it 'can add available services' do
       expect(@facility.services).to eq([])
       @facility.add_service('New Drivers License')
-      @facility.add_service('Renew Drivers License')
+      @facility.add_service('Renew License')
       @facility.add_service('Vehicle Registration')
       @facility.add_service('Written Test')
       @facility.add_service('Road Test')
-      expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration', 'Written Test', 'Road Test'])
+      expect(@facility.services).to eq(['New Drivers License', 'Renew License', 'Vehicle Registration', 'Written Test', 'Road Test'])
     end
   end
 # above here is original fork(except lines 6-10). below is my work
@@ -109,11 +109,30 @@ RSpec.describe Facility do
       @facility.add_service('Road Test')
       @facility.administer_written_test(@registrant)
       @facility.administer_road_test(@registrant)
-      # @registrant.take_road_test
 
       expect(@facility.administer_road_test(@registrant)).to eq(true)
-
     end
   end
 
+  describe '#renew license' do
+    it 'defaults to false' do
+      @registrant = Registrant.new('Stefan', 35, true)
+
+      expect(@facility.renew_drivers_license(@registrant)).to eq(false)
+    end
+
+    it 'can renew licenses' do
+      @registrant = Registrant.new('Stefan', 35, true)
+      @facility.add_service('Written Test')
+      @facility.add_service('Road Test')
+      @facility.add_service('Renew License')
+      @facility.administer_written_test(@registrant)
+      @facility.administer_road_test(@registrant)
+      @facility.renew_drivers_license(@registrant)
+
+      expect(@facility.renew_drivers_license(@registrant)).to eq(true)
+    end
+  end
+
+  
 end

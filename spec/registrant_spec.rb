@@ -68,8 +68,14 @@ RSpec.describe '#registrant' do
 
             expect(@registrant.license_data[:license]).to eq(true)
         end
+    end
 
+    describe '#renew drivers license' do
+        it 'sets license data renewed to true' do
+            @registrant.set_renewed
 
+            expect(@registrant.license_data[:renewed]).to eq(true)
+        end
     end
 
 end
