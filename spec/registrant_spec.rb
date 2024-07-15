@@ -40,22 +40,36 @@ RSpec.describe '#registrant' do
         expect(@registrant.earn_permit).to eq(true)
     end
 
-    it 'can take a written test' do
-        expect(@registrant.license_data[:written]).to eq (false)
+    describe '#take written test' do 
+        it 'can take a written test' do
+            expect(@registrant.license_data[:written]).to eq (false)
 
-        @registrant.take_written_test
+            @registrant.take_written_test
 
-        expect(@registrant.license_data[:written]).to eq(true)
+            expect(@registrant.license_data[:written]).to eq(true)
+        end
+
+        it 'can only take a written test if theyre over age 16' do
+            @registrant = Registrant.new('Tucker', 15 )
+            expect(@registrant.license_data[:written]).to eq (false)
+        end
+
+        it 'can only take a written test if they have a permit' do
+            @registrant = Registrant.new('Penny', 16 )
+            expect(@registrant.license_data[:written]).to eq (false)
+        end
     end
 
-    it 'can only take a written test if theyre over age 16' do
-        @registrant = Registrant.new('Tucker', 15 )
-        expect(@registrant.license_data[:written]).to eq (false)
-    end
+    describe '#take road test' do
+        it 'grants a license' do
+            expect(@registrant.license_data[:license]).to eq (false)
 
-    it 'can only take a written test if they have a permit' do
-        @registrant = Registrant.new('Penny', 16 )
-        expect(@registrant.license_data[:written]).to eq (false)
+            @registrant.take_road_test
+
+            expect(@registrant.license_data[:license]).to eq(true)
+        end
+
+
     end
 
 end

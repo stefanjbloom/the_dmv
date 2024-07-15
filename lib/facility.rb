@@ -40,14 +40,24 @@ class Facility
   end
 
   def administer_written_test(registrant)
-    # A written test can only be administered to 
-    # registrants with a permit and who are at least 16 years of age
     if @services.include?('Written Test') == true && registrant.age >= 16 && registrant.permit? == true
       registrant.take_written_test
     else 
       return false
     end
   end
+
+  def administer_road_test(registrant)
+    if @services.include?('Road Test') == true && registrant.license_data[:written] == true
+    registrant.take_road_test
+    else 
+      false
+    end
+
+  end
+# Administer a road test
+# A road test can only be administered to registrants who have passed the written test
+# For simplicity’s sake, Registrants who qualify for the road test automatically earn a license
 end
 
       # require 'pry'; binding.pry

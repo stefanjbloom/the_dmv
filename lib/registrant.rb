@@ -32,9 +32,9 @@ class Registrant
             false
         end
     end
-    # if @age >= 16 && permit? == false
-    #  false
-    # else registrant.take_written_test
-    # end
+
+    def take_road_test
+        @license_data[:license] = true
+    end
 
 end
