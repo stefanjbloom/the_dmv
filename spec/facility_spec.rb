@@ -29,7 +29,8 @@ RSpec.describe Facility do
       @facility.add_service('New Drivers License')
       @facility.add_service('Renew Drivers License')
       @facility.add_service('Vehicle Registration')
-      expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration'])
+      @facility.add_service('Written Test')
+      expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration', 'Written Test'])
     end
   end
 # above here is original fork(except lines 6-10). below is my work
@@ -55,8 +56,6 @@ RSpec.describe Facility do
     end
 
     it 'gives a license plate' do
-      # expect(@vehicle[:plate_type]).to eq(nil)
-
       @facility.register_vehicle(@cruz)
 
       expect(@cruz.give_plate).to eq(:regular)  
@@ -70,35 +69,29 @@ RSpec.describe Facility do
     end
 
     it 'increases with every vehicle registration' do
-      # @facility.register_vehicle(@camaro)
-      # expect(@facility.collected_fees).to eq(25)   
       @facility.add_service('Vehicle Registration')
-
       @facility.register_vehicle(@cruz)
+
       expect(@facility.collected_fees).to eq(100)
-
-      # @facility.register_vehicle(@bolt)
-      # expect(@facility.collected_fees).to eq(200)  
      end
-
   end
 
-  #    @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice, plate_type: :regular} )
-  #    expect(@facility.collected_fees).to eq(100)
+  describe '#administer written test' do
+    it 'gives the registrant a written test' do
+      @registrant = Registrant.new('Stefan', 35, true)
+      expect(@facility.administer_written_test(@registrant)).to eq(false)
 
-  #    @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev, plate_type: :ev} )
-  #    expect(@facility.collected_fees).to eq(200)
+      @registrant = Registrant.new('Stefan', 35, true)
+      @facility.add_service('Written Test')
+      @facility.administer_written_test(@registrant)
 
-  #    @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice, plate_type: :antique} )
+      expect(@facility.administer_written_test(@registrant)).to eq(true)
+    end
 
-  #    expect(@facility.collected_fees).to eq(25)
+    it 'can only be administered to registrants 16 and older and with a permit' do
+      @registrant = Registrant.new('Penny', 16 )
 
-  #   end
-  # end
-# We want specific DMV facilities to be able to administer sevices to our registrants.
-# Register a Vehicle
-#   25 years old and older are ANTIQUE and cost $25 to Register
-#   EV's cost $200 to register
-#   All other vehicles cost $100 to register
-#   plate_type should be set to :regular, :antique, or :ev upon successful registration
+      expect(@facility.administer_written_test(@registrant)).to eq(false)
+    end
+  end
 end

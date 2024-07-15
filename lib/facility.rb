@@ -39,5 +39,15 @@ class Facility
     end
   end
 
-
+  def administer_written_test(registrant)
+    # A written test can only be administered to 
+    # registrants with a permit and who are at least 16 years of age
+    if @services.include?('Written Test') == true && registrant.age >= 16 && registrant.permit? == true
+      registrant.take_written_test
+    else 
+      return false
+    end
+  end
 end
+
+      # require 'pry'; binding.pry
