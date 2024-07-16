@@ -42,5 +42,13 @@ RSpec.describe FacilityFactory do
             expect(@missouri_facilities.facility_created[0]).to be_an_instance_of(Facility)
         end
 
+        it 'matches the amount of mo facility arrays' do
+            @missouri_facilities = FacilityFactory.new
+            @mo_dmv_data = DmvDataService.new.mo_dmv_office_locations
+            @missouri_facilities.create_ny_facility(@mo_dmv_data)
+
+            expect(@missouri_facilities.facility_created.count).to eq(@mo_dmv_data.count)
+        end
+
     end
 end

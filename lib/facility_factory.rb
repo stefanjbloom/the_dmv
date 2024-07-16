@@ -15,6 +15,9 @@ class FacilityFactory
     def create_mo_facility(data_set)
         @facility_created = data_set.map do |data|
             facility =Facility.new({
+                :name => data[:name],
+                :phone => data[:phone],
+                :address => "#{data[:address1]}, #{data[:city]}, #{data[:state]}, #{data[:zipcode]}, #{data[:county]}"
                 
             })
         end
