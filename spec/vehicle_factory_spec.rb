@@ -15,9 +15,9 @@ RSpec.describe '#VehicleFactory' do
         expect(@factory).to be_an_instance_of(VehicleFactory)
     end
 
-    it 'will create vehicles' do
-        @factory.create_vehicles(@wa_ev_registrations)
-
-        expect(@factory.create_vehicles).to eq(@wa_ev_registrations)
+    it 'will create vehicles based off number of evs in wa' do
+        @factory.create_vehicles(@data)
+        
+        expect(@factory.create_vehicles(@data).count).to eq(@data.count)
     end
 end
