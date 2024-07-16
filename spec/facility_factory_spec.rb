@@ -13,8 +13,24 @@ RSpec.describe FacilityFactory do
     end
 
     describe '#create ny facility' do
-        it 'instantiates ny dmv data' do
+        it 'creates a hash within an array' do
+            @new_york_facilities = FacilityFactory.new
+            @ny_dmv_data = DmvDataService.new.ny_dmv_office_locations
+            @new_york_facilities.create_ny_facility(@ny_dmv_data)
 
+            expect(@new_york_facilities.facility_created).to be_an_instance_of(Array)
+            expect(@new_york_facilities.facility_created[0]).to be_an_instance_of(Facility)
         end
+
+        it 'matches the amount of ny facility arrays' do
+            @new_york_facilities = FacilityFactory.new
+            @ny_dmv_data = DmvDataService.new.ny_dmv_office_locations
+            @new_york_facilities.create_ny_facility(@ny_dmv_data)
+
+            expect(@new_york_facilities.facility_created.count).to eq(@ny_dmv_data.count)
+            require 'pry';binding.pry
+        end
+
+    describe
     end
 end
