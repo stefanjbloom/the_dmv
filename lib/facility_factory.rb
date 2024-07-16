@@ -1,8 +1,9 @@
 class FacilityFactory
 
-#     attr_reader :vehicles_created
-    
-#     def create_vehicles(dmv_registrations)
+    attr_reader :facility_created
+
+    def create_ny_facility(ny_dmv_data)
+
 #         @vehicles_created = dmv_registrations.map do |dmv_registration|
 #             dmv_registration.default = "nil"
 #             vehicle = Vehicle.new({
@@ -15,5 +16,5 @@ class FacilityFactory
 #                 :engine => :ev
 #             })
 #             end
-#     end
-# end
+    end
+end
