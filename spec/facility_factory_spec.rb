@@ -31,6 +31,7 @@ RSpec.describe FacilityFactory do
             require 'pry';binding.pry
         end
 
-    describe
+    describe '#create mo facility' do
+    
     end
 end

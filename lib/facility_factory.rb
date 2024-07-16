@@ -12,5 +12,8 @@ class FacilityFactory
         end
     end
 
-    
+    def create_mo_facility(data_set)
+        
+    end
+
 end
