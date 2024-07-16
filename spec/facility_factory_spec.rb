@@ -34,7 +34,12 @@ RSpec.describe FacilityFactory do
 
     describe '#create mo facility' do
         it 'creates a hash within an array' do
+            @missouri_facilities = FacilityFactory.new
+            @mo_dmv_data = DmvDataService.new.mo_dmv_office_locations
+            @missouri_facilities.create_ny_facility(@mo_dmv_data)
 
+            expect(@missouri_facilities.facility_created).to be_an_instance_of(Array)
+            expect(@missouri_facilities.facility_created[0]).to be_an_instance_of(Facility)
         end
 
     end

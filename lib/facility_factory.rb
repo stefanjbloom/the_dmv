@@ -13,7 +13,12 @@ class FacilityFactory
     end
 
     def create_mo_facility(data_set)
-        
+        @facility_created = data_set.map do |data|
+            facility =Facility.new({
+                
+            })
+        end
+
     end
 
 end
