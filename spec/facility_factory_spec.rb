@@ -10,6 +10,7 @@ RSpec.describe FacilityFactory do
         @missouri_facilities = FacilityFactory.new
 
         expect(@new_york_facilities).to be_an_instance_of(FacilityFactory)
+        expect(@missouri_facilities).to be_an_instance_of(FacilityFactory)
     end
 
     describe '#create ny facility' do
@@ -28,10 +29,13 @@ RSpec.describe FacilityFactory do
             @new_york_facilities.create_ny_facility(@ny_dmv_data)
 
             expect(@new_york_facilities.facility_created.count).to eq(@ny_dmv_data.count)
-            require 'pry';binding.pry
         end
+    end
 
     describe '#create mo facility' do
-    
+        it 'creates a hash within an array' do
+
+        end
+
     end
 end
