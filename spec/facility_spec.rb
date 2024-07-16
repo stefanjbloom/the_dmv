@@ -34,8 +34,7 @@ RSpec.describe Facility do
       expect(@facility.services).to eq(['New Drivers License', 'Renew License', 'Vehicle Registration', 'Written Test', 'Road Test'])
     end
   end
-# above here is original fork(except lines 6-10). below is my work
-
+  
   describe '#register vehicle' do
     it 'starts with an empty array' do
       expect(@facility.registered_vehicles).to eq([])

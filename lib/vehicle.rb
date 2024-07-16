@@ -27,8 +27,6 @@ class Vehicle
     @engine == :ev
   end
 
-# above here is original fork. below is my work
-
   def set_registration_date
     @registration_date = Date.today
   end

@@ -19,8 +19,6 @@ class Facility
     @services << service
   end
 
-# above here is original fork. below is my work
-
   def register_vehicle(vehicle)
     if @services.include?('Vehicle Registration') == true
       @registered_vehicles << vehicle
