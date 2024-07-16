@@ -1,9 +1,10 @@
 class Registrant
-
+# Reminder that I built this object/not forked
     attr_reader :name,
                 :age,
                 :permit,
-                :license_data
+                :license_data,
+                :take_written_test
 
     def initialize(name, age, permit = false)
         @name = name
@@ -22,6 +23,23 @@ class Registrant
 
     def earn_permit
         @permit = true
+    end
+
+    def take_written_test
+        if @license_data[:written] = true
+            true
+        else @age < 16 && permit? == false
+            false
+        end
+    end
+
+    def take_road_test
+        @license_data[:license] = true
+    end
+
+    def set_renewed
+        @license_data[:renewed] = true
+
     end
 
 end
