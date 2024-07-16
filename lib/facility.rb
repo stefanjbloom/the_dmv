@@ -4,7 +4,8 @@ class Facility
               :phone, 
               :services,
               :registered_vehicles,
-              :collected_fees
+              :collected_fees,
+              :facility_created
 
   def initialize(facility_info)
     @name = facility_info[:name]
@@ -61,7 +62,18 @@ class Facility
     end
   end
 
-  
+  def new_york_facilities(ny_dmv_data)
+    @facility_created = ny_dmv_data.map do |ny_data|
+      new_york_facilities = Facility.new({
+        :name => ny_dmv_data[:office_name],
+        :address => ny_dmv_data[:street_address_line_1],
+        :phone => ny_dmv_data[:public_phone_number]
+        # :services => ny_dmv_data
+        # :registered_vehicles => ny_dmv_data
+        # :collected_fees => ny_dmv_data
+      })
+    end
+  end
 end
 
 # require 'pry'; binding.pry

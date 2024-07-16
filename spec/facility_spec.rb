@@ -6,13 +6,14 @@ RSpec.configure do |config|
 
 RSpec.describe Facility do
   before(:each) do
-    @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
+    # @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
     @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev} )
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
   end
   describe '#initialize' do
     it 'can initialize' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       expect(@facility).to be_an_instance_of(Facility)
       expect(@facility.name).to eq('DMV Tremont Branch')
       expect(@facility.address).to eq('2855 Tremont Place Suite 118 Denver CO 80205')
@@ -23,6 +24,7 @@ RSpec.describe Facility do
 
   describe '#add service' do
     it 'can add available services' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       expect(@facility.services).to eq([])
       @facility.add_service('New Drivers License')
       @facility.add_service('Renew License')
@@ -35,10 +37,12 @@ RSpec.describe Facility do
 
   describe '#register vehicle' do
     it 'starts with an empty array' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       expect(@facility.registered_vehicles).to eq([])
     end
 
     it 'can add vehicles to registered vehicles' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @facility.add_service('Vehicle Registration')
       @facility.register_vehicle(@cruz)
       @facility.register_vehicle(@bolt)
@@ -48,12 +52,14 @@ RSpec.describe Facility do
     end
 
     it 'sets todays date as registration date' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @facility.register_vehicle(@cruz)
 
       expect(@cruz.set_registration_date).to eq(Date.today)
     end
 
     it 'gives a license plate' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @facility.register_vehicle(@cruz)
 
       expect(@cruz.give_plate).to eq(:regular)  
@@ -63,10 +69,12 @@ RSpec.describe Facility do
 
   describe '#collect fees' do
     it 'starts at 0' do
+    @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
      expect(@facility.collected_fees).to eq(0)
     end
 
     it 'increases with every vehicle registration' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @facility.add_service('Vehicle Registration')
       @facility.register_vehicle(@cruz)
 
@@ -76,6 +84,7 @@ RSpec.describe Facility do
 
   describe '#administer written test' do
     it 'gives the registrant a written test' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @registrant = Registrant.new('Stefan', 35, true)
       expect(@facility.administer_written_test(@registrant)).to eq(false)
 
@@ -87,6 +96,7 @@ RSpec.describe Facility do
     end
 
     it 'can only be administered to registrants 16 and older and with a permit' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @registrant = Registrant.new('Penny', 16 )
 
       expect(@facility.administer_written_test(@registrant)).to eq(false)
@@ -95,12 +105,14 @@ RSpec.describe Facility do
 
   describe '#administer road test' do
     it 'is default to false' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @registrant = Registrant.new('Stefan', 35, true)
 
       expect(@facility.administer_road_test(@registrant)).to eq(false)
     end
 
     it 'grants license when taken' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @registrant = Registrant.new('Stefan', 35, true)
       @facility.add_service('Written Test')
       @facility.add_service('Road Test')
@@ -113,12 +125,14 @@ RSpec.describe Facility do
 
   describe '#renew license' do
     it 'defaults to false' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @registrant = Registrant.new('Stefan', 35, true)
 
       expect(@facility.renew_drivers_license(@registrant)).to eq(false)
     end
 
     it 'can renew licenses' do
+      @facility = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
       @registrant = Registrant.new('Stefan', 35, true)
       @facility.add_service('Written Test')
       @facility.add_service('Road Test')
@@ -133,10 +147,20 @@ RSpec.describe Facility do
 
   describe '#create new facility' do
     it 'can create a new york facility' do
+    
       @new_york_facilities = Facility.new({name: 'HUNTINGTON', address: '1815 E JERICHO TURNPIKE', phone: '7184774820'})
 
       expect(@new_york_facilities).to be_an_instance_of(Facility)
     end
+
+    describe 'new york facilities' do
+      it 'can instantiate data from dmv data service' do
+        @new_york_facilities = Facility.new({name: 'HUNTINGTON', address: '1815 E JERICHO TURNPIKE', phone: '7184774820'})
+        @facility.new_york_facilities(DmvDataService.new.ny_dmv_office_locations)
+        # expect(@facility.new_york_facilities).to eq
+      end
+    end
+#  = DmvDataService.new.ny_dmv_office_locations
   end
   
 end
