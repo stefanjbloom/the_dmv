@@ -1,5 +1,5 @@
 class Registrant
-# Reminder that I built this object/not forked
+    
     attr_reader :name,
                 :age,
                 :permit,

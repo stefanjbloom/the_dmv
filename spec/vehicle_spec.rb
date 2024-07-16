@@ -38,8 +38,6 @@ RSpec.describe Vehicle do
     end
   end
 
-# above here is original fork. below is my work
-
   describe '#set registration date' do
     it 'starts at nil when not in hash' do
       expect(@cruz.registration_date).to eq(nil)

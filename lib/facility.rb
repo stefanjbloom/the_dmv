@@ -4,7 +4,8 @@ class Facility
               :phone, 
               :services,
               :registered_vehicles,
-              :collected_fees
+              :collected_fees,
+              :facility_created
 
   def initialize(facility_info)
     @name = facility_info[:name]
@@ -13,13 +14,12 @@ class Facility
     @services = []
     @registered_vehicles = []
     @collected_fees = 0
+    @facility_created = []
   end
 
   def add_service(service)
     @services << service
   end
-
-# above here is original fork. below is my work
 
   def register_vehicle(vehicle)
     if @services.include?('Vehicle Registration') == true
@@ -63,5 +63,3 @@ class Facility
     end
   end
 end
-
-# require 'pry'; binding.pry
