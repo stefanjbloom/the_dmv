@@ -14,6 +14,7 @@ class Facility
     @services = []
     @registered_vehicles = []
     @collected_fees = 0
+    @facility_created = []
   end
 
   def add_service(service)
@@ -61,40 +62,4 @@ class Facility
       false
     end
   end
-
-  def new_york_facilities(ny_dmv_data)
-    @facility_created = ny_dmv_data.map do |ny_data|
-      new_york_facilities = Facility.new({
-        :name => ny_dmv_data[:office_name],
-        :address => ny_dmv_data[:street_address_line_1],
-        :phone => ny_dmv_data[:public_phone_number]
-        # :services => ny_dmv_data
-        # :registered_vehicles => ny_dmv_data
-        # :collected_fees => ny_dmv_data
-      })
-    end
-  end
 end
-
-# require 'pry'; binding.pry
-
-# I'm skipping colorado dmv and going with the new york facilities.
-# new_york_facilities = DmvDataService.new.ny_dmv_office_locations
-
-# missouri_facilities = DmvDataService.new.mo_dmv_office_locations
-
-# pry(main)> require './lib/vehicle'
-# #=> true
-
-# pry(main)> require './lib/vehicle_factory'
-# #=> true
-
-# pry(main)> require './lib/dmv_data_service'
-# #=> true
-
-# pry(main)> require './lib/facility'
-# #=> true
-# Refactor your code to allow for the creation of Facility objects 
-# from another data source - NY State DMV Facilities
-
-#need name/address/phone

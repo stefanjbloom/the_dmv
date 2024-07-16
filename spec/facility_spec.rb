@@ -144,23 +144,5 @@ RSpec.describe Facility do
       expect(@facility.renew_drivers_license(@registrant)).to eq(true)
     end
   end
-
-  describe '#create new facility' do
-    it 'can create a new york facility' do
-    
-      @new_york_facilities = Facility.new({name: 'HUNTINGTON', address: '1815 E JERICHO TURNPIKE', phone: '7184774820'})
-
-      expect(@new_york_facilities).to be_an_instance_of(Facility)
-    end
-
-    describe 'new york facilities' do
-      it 'can instantiate data from dmv data service' do
-        @new_york_facilities = Facility.new({name: 'HUNTINGTON', address: '1815 E JERICHO TURNPIKE', phone: '7184774820'})
-        @facility.new_york_facilities(DmvDataService.new.ny_dmv_office_locations)
-        # expect(@facility.new_york_facilities).to eq
-      end
-    end
-#  = DmvDataService.new.ny_dmv_office_locations
-  end
-  
 end
+  
