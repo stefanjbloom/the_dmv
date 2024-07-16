@@ -16,7 +16,8 @@ RSpec.describe '#VehicleFactory' do
     end
 
     it 'will create vehicles' do
-        @factory.create_vehicles(wa_ev_registrations).to eq(@vehicles_created)
-        
+        @factory.create_vehicles(@wa_ev_registrations)
+
+        expect(@factory.create_vehicles).to eq(@wa_ev_registrations)
     end
 end
